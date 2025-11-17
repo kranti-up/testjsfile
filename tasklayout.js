@@ -96,6 +96,22 @@ $('#text').css({
     "z-index": "9999"
 });
 
+const imageArea = document.getElementById('image-area');  
+console.log("Getting the image layout id")  
+if (!imageArea) {
+    console.log("No #image-area element found");
+}
+else {
+    console.log("Found ImageArea element")
+    const targetImg = document.createElement('img');
+    targetImg.id = 'target-board-image';
+    targetImg.src = 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif';
+    targetImg.width = 400;
+    targetImg.height = 300;        
+    imageArea.appendChild(targetImg);        
+    console.log("Added target image child")
+}
+
 function scrollToBottom() {
     window.scrollTo({
         top: document.body.scrollHeight,
@@ -157,21 +173,6 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
 // We want to replace the text input with a textarea to support multiple line messages
 (function() {
-    const imageArea = document.getElementById('image-area');  
-    console.log("Getting the image layout id")  
-    if (!imageArea) {
-        console.log("No #image-area element found");
-    }
-    else {
-        console.log("Found ImageArea element")
-        const targetImg = document.createElement('img');
-        targetImg.id = 'target-board-image';
-        targetImg.src = 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif';
-        targetImg.width = 400;
-        targetImg.height = 300;        
-        imageArea.appendChild(targetImg);        
-        console.log("Added target image child")
-    }
     const oldInput = document.getElementById('text');
     if (oldInput) {
         const textarea = document.createElement('textarea');
@@ -197,11 +198,10 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
                 if (!message) return;
 
                 // We display the message and submit the message. We give null to use the current time stamp
-                console.log("Calling display_message")
+                console.log("Calling display_message", message)
                 display_message(self_user, null, message);
                 submit_text(message);
-                console.log("Calling display_image")                
-                display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
+
 
                 // Disable the textarea after sending the message
                 textarea.disabled = true;
