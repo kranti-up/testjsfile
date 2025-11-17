@@ -73,15 +73,15 @@ $('html, body').css({
 
 // Also check if there's a container wrapper that might be interfering
 // If your content is inside another container, make sure it's also centered:
-content.parent().css({
-    'width': '100%',
-    'text-align': 'center'  // This can help center the child
-});
+//content.parent().css({
+//    'width': '100%',
+//    'text-align': 'center'  // This can help center the child
+//});
 
 // Then reset text alignment for the content itself
-content.css({
-    'text-align': 'left'  // Reset text alignment
-});
+//content.css({
+//    'text-align': 'left'  // Reset text alignment
+//});
 
 // Keep input fixed and centered
 $('#text').css({
