@@ -110,6 +110,8 @@ else {
     targetImg.height = 300;        
     imageArea.appendChild(targetImg);        
     console.log("Added target image child")
+    console.log("Calling display_image")    
+    display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
 }
 
 function scrollToBottom() {
