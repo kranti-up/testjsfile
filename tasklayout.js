@@ -164,6 +164,12 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
     }
     else {
         console.log("Found ImageArea element")
+        const targetImg = document.createElement('img');
+        targetImg.id = 'target-board-image';
+        targetImg.src = 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif';
+        targetImg.width = 400;
+        targetImg.height = 300;        
+        imageArea.appendChild(targetImg);        
     }
     const oldInput = document.getElementById('text');
     if (oldInput) {
