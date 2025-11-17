@@ -1,7 +1,7 @@
 function injectDebuggableScript(code, name) {
+  console.log("Inside injectDebuggableScript")
   const script = document.createElement("script");
   script.type = "text/javascript";
-  console.log("Inside injectDebuggableScript: code: ",code, " name: ",name)
   script.textContent = `${code}\n//# sourceURL=${name}`;
   document.documentElement.appendChild(script);
 }
@@ -56,20 +56,20 @@ $('html, body').css({
 });
 
 // Center the content properly
-content = $('#content')
-content.css({
-    'width': '800px',
-    'max-width': '90%',
-    'margin': '0 auto',           // This should center it
-    'padding-top': '80px',
-    'padding-bottom': '120px',
-    'box-sizing': 'border-box',
-    // Make sure no positioning properties are interfering
-    'position': 'static',         // Explicitly set to static
-    'left': 'auto',
-    'right': 'auto',
-    'transform': 'none'
-});
+//content = $('#content')
+//content.css({
+//    'width': '800px',
+//    'max-width': '90%',
+//   'margin': '0 auto',           // This should center it
+//    'padding-top': '80px',
+//    'padding-bottom': '120px',
+//    'box-sizing': 'border-box',
+//    // Make sure no positioning properties are interfering
+//    'position': 'static',         // Explicitly set to static
+//    'left': 'auto',
+//    'right': 'auto',
+//    'transform': 'none'
+//});
 
 // Also check if there's a container wrapper that might be interfering
 // If your content is inside another container, make sure it's also centered:
