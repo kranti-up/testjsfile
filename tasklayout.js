@@ -218,6 +218,8 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
         socket.on("text_message", function(data) {
             console.log("Received some text message")
             if (data.user.id !== self_user.id) {
+                console.log('Calling display_image')
+                display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
                 // reactivate the chat-area
                 textarea.disabled = false;
                 textarea.placeholder = "Enter your message here!";
