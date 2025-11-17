@@ -157,6 +157,8 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
 // We want to replace the text input with a textarea to support multiple line messages
 (function() {
+    const imageInput = document.getElementById('image-area');  
+    console.log("Got the image layout id")  
     const oldInput = document.getElementById('text');
     if (oldInput) {
         const textarea = document.createElement('textarea');
