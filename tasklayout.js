@@ -84,18 +84,18 @@ $('html, body').css({
 //});
 
 // Keep input fixed and centered
-$('#text').css({
-    "position": "fixed",
-    "bottom": "20px",
-    "left": "50%",
-    "transform": "translateX(-50%)",
-    "width": "800px",
-    "max-width": "90%",
-    "padding": "10px",
-    "font-size": "16px",
-    "box-sizing": "border-box",
-    "z-index": "9999"
-});
+//$('#text').css({
+//    "position": "fixed",
+//    "bottom": "20px",
+//    "left": "50%",
+//    "transform": "translateX(-50%)",
+//    "width": "800px",
+//    "max-width": "90%",
+//   "padding": "10px",
+//    "font-size": "16px",
+//    "box-sizing": "border-box",
+//    "z-index": "9999"
+//});
 
 function scrollToBottom() {
     window.scrollTo({
@@ -158,6 +158,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
 // We want to replace the text input with a textarea to support multiple line messages
 (function() {
+    console.log("Inside some function")
     const imageArea = document.getElementById('image-area');
     if (!imageArea) {
         console.warn("No #image-area element found");
