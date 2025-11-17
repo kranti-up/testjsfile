@@ -1,6 +1,7 @@
 function injectDebuggableScript(code, name) {
   const script = document.createElement("script");
   script.type = "text/javascript";
+  console.log("Inside injectDebuggableScript: code: ",code, " name: ",name)
   script.textContent = `${code}\n//# sourceURL=${name}`;
   document.documentElement.appendChild(script);
 }
@@ -43,7 +44,7 @@ injectDebuggableScript(`
 
 
 // Hide the sidebar
-//$('#sidebar').hide();
+$('#sidebar').hide();
 
 // Make sure the body and html allow full page scrolling
 $('html, body').css({
@@ -57,40 +58,39 @@ $('html, body').css({
 // Center the content properly
 content = $('#content')
 content.css({
-    'width': '100px',
-    'max-width': '10%',
+    'width': '800px',
+    'max-width': '90%',
     'margin': '0 auto',           // This should center it
     'padding-top': '80px',
     'padding-bottom': '120px',
     'box-sizing': 'border-box',
     // Make sure no positioning properties are interfering
-    //'position': 'static',         // Explicitly set to static
-    'left': '10px',//'auto',
+    'position': 'static',         // Explicitly set to static
+    'left': 'auto',
     'right': 'auto',
     'transform': 'none'
 });
-console.log('Set the css')
+
 // Also check if there's a container wrapper that might be interfering
 // If your content is inside another container, make sure it's also centered:
 content.parent().css({
-    'width': '10%',
+    'width': '100%',
     'text-align': 'center'  // This can help center the child
 });
-console.log('Set the parent')
 
 // Then reset text alignment for the content itself
 content.css({
     'text-align': 'left'  // Reset text alignment
 });
-console.log('Set the text alignment to center')
+
 // Keep input fixed and centered
 $('#text').css({
-    //"position": "fixed",
+    "position": "fixed",
     "bottom": "20px",
-    "left": "5%",
+    "left": "50%",
     "transform": "translateX(-50%)",
-    "width": "100px",
-    "max-width": "10%",
+    "width": "800px",
+    "max-width": "90%",
     "padding": "10px",
     "font-size": "16px",
     "box-sizing": "border-box",
@@ -158,7 +158,20 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
 // We want to replace the text input with a textarea to support multiple line messages
 (function() {
-    console.log("Inside function in JS file")
+    const imageArea = document.getElementById('image-area');
+    if (!imageArea) {
+        console.warn("No #image-area element found");
+        return;
+    }
+
+    // Create target board image
+    const targetImg = document.createElement('img');
+    targetImg.id = 'target-board-image';
+    targetImg.src = 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif';
+    targetImg.width = 400;
+    targetImg.height = 300;
+
+
     const oldInput = document.getElementById('text');
     if (oldInput) {
         const textarea = document.createElement('textarea');
@@ -184,7 +197,6 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
                 if (!message) return;
 
                 // We display the message and submit the message. We give null to use the current time stamp
-                console.log("Calling display_message")
                 display_message(self_user, null, message);
                 submit_text(message);
 
@@ -199,7 +211,6 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
         // Wait for the incoming message of your partner. If the message arrived, activate the textarea
         socket.on("text_message", function(data) {
-            console.log("Inside receiving text message")
             if (data.user.id !== self_user.id) {
                 // reactivate the chat-area
                 textarea.disabled = false;
