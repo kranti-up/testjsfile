@@ -1,5 +1,4 @@
 function injectDebuggableScript(code, name) {
-  console.log("Inside injectDebuggableScript")
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.textContent = `${code}\n//# sourceURL=${name}`;
@@ -56,46 +55,46 @@ $('html, body').css({
 });
 
 // Center the content properly
-//content = $('#content')
-//content.css({
-//    'width': '800px',
-//    'max-width': '90%',
-//   'margin': '0 auto',           // This should center it
-//    'padding-top': '80px',
-//    'padding-bottom': '120px',
-//    'box-sizing': 'border-box',
-//    // Make sure no positioning properties are interfering
-//    'position': 'static',         // Explicitly set to static
-//    'left': 'auto',
-//    'right': 'auto',
-//    'transform': 'none'
-//});
+content = $('#content')
+content.css({
+    'width': '800px',
+    'max-width': '90%',
+    'margin': '0 auto',           // This should center it
+    'padding-top': '80px',
+    'padding-bottom': '120px',
+    'box-sizing': 'border-box',
+    // Make sure no positioning properties are interfering
+    'position': 'static',         // Explicitly set to static
+    'left': 'auto',
+    'right': 'auto',
+    'transform': 'none'
+});
 
 // Also check if there's a container wrapper that might be interfering
 // If your content is inside another container, make sure it's also centered:
-//content.parent().css({
-//    'width': '100%',
-//    'text-align': 'center'  // This can help center the child
-//});
+content.parent().css({
+    'width': '100%',
+    'text-align': 'center'  // This can help center the child
+});
 
 // Then reset text alignment for the content itself
-//content.css({
-//    'text-align': 'left'  // Reset text alignment
-//});
+content.css({
+    'text-align': 'left'  // Reset text alignment
+});
 
 // Keep input fixed and centered
-//$('#text').css({
-//    "position": "fixed",
-//    "bottom": "20px",
-//    "left": "50%",
-//    "transform": "translateX(-50%)",
-//    "width": "800px",
-//    "max-width": "90%",
-//   "padding": "10px",
-//    "font-size": "16px",
-//    "box-sizing": "border-box",
-//    "z-index": "9999"
-//});
+$('#text').css({
+    "position": "fixed",
+    "bottom": "20px",
+    "left": "50%",
+    "transform": "translateX(-50%)",
+    "width": "800px",
+    "max-width": "90%",
+    "padding": "10px",
+    "font-size": "16px",
+    "box-sizing": "border-box",
+    "z-index": "9999"
+});
 
 function scrollToBottom() {
     window.scrollTo({
@@ -158,21 +157,6 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
 // We want to replace the text input with a textarea to support multiple line messages
 (function() {
-    console.log("Inside some function")
-    const imageArea = document.getElementById('image-area');
-    if (!imageArea) {
-        console.warn("No #image-area element found");
-        return;
-    }
-
-    // Create target board image
-    const targetImg = document.createElement('img');
-    targetImg.id = 'target-board-image';
-    targetImg.src = 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif';
-    targetImg.width = 400;
-    targetImg.height = 300;
-
-
     const oldInput = document.getElementById('text');
     if (oldInput) {
         const textarea = document.createElement('textarea');
