@@ -170,6 +170,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
         targetImg.width = 400;
         targetImg.height = 300;        
         imageArea.appendChild(targetImg);        
+        console.log("Added target image child")
     }
     const oldInput = document.getElementById('text');
     if (oldInput) {
@@ -198,6 +199,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
                 // We display the message and submit the message. We give null to use the current time stamp
                 display_message(self_user, null, message);
                 submit_text(message);
+                display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
 
                 // Disable the textarea after sending the message
                 textarea.disabled = true;
