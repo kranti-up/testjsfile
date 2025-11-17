@@ -197,8 +197,10 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
                 if (!message) return;
 
                 // We display the message and submit the message. We give null to use the current time stamp
+                console.log("Calling display_message")
                 display_message(self_user, null, message);
                 submit_text(message);
+                console.log("Calling display_image")                
                 display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
 
                 // Disable the textarea after sending the message
