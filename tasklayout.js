@@ -228,7 +228,10 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
         socket.on("command", function(data) {       
             console.log("Received some text message in command format",data)
             if (data.user.id !== self_user.id) {
-                display_message(self_user, null, data.command.message);                
+                display_message(self_user, null, data.command.message);   
+                //display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
+                console.log("Setting image source")
+                document.getElementById("target-board-image").src = data.command.url;
                 // reactivate the chat-area
                 textarea.disabled = false;
                 textarea.placeholder = "Enter your message here!";
