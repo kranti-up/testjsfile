@@ -228,6 +228,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
         socket.on("command", function(data) {       
             console.log("Received some text message in command format",data)
             if (data.user.id !== self_user.id) {
+                display_message(self_user, null, data.command.message);                
                 // reactivate the chat-area
                 textarea.disabled = false;
                 textarea.placeholder = "Enter your message here!";
@@ -242,6 +243,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
                 if (typeof (data.command) === "object") {
                     console.log('Calling display_image')
                     display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
+                    document.getElementById("target-board-image").src = data.src;
                 }
                 // reactivate the chat-area
                 textarea.disabled = false;
