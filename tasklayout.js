@@ -226,6 +226,17 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
         });
 
         socket.on("command", function(data) {       
+            console.log("Received some text message in text format")
+            if (data.user.id !== self_user.id) {
+                // reactivate the chat-area
+                textarea.disabled = false;
+                textarea.placeholder = "Enter your message here!";
+                textarea.focus();
+            }
+        });                 
+
+        /*
+        socket.on("command", function(data) {       
             console.log("Received some message in command format")
             if (data.user.id !== self_user.id) {
                 if (typeof (data.command) === "object") {
@@ -238,6 +249,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
                 textarea.focus();
             }
         });
+        */
     }
 })();
 
