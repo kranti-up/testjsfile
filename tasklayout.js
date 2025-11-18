@@ -216,10 +216,22 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
         // Wait for the incoming message of your partner. If the message arrived, activate the textarea
         socket.on("text_message", function(data) {
-            console.log("Received some text message")
+            console.log("Received some text message in text format")
             if (data.user.id !== self_user.id) {
-                console.log('Calling display_image')
-                display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
+                // reactivate the chat-area
+                textarea.disabled = false;
+                textarea.placeholder = "Enter your message here!";
+                textarea.focus();
+            }
+        });
+
+        socket.on("command", (data) => {        
+            console.log("Received some message in command format")
+            if (data.user.id !== self_user.id) {
+                if (typeof (data.command) === "object") {
+                    console.log('Calling display_image')
+                    display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
+                }
                 // reactivate the chat-area
                 textarea.disabled = false;
                 textarea.placeholder = "Enter your message here!";
