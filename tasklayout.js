@@ -110,8 +110,8 @@ else {
     targetImg.height = 300;        
     imageArea.appendChild(targetImg);        
     console.log("Added target image child")
-    console.log("Calling display_image")    
-    display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
+    //console.log("Calling display_image")    
+    //display_image(self_user, null, 'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif')
 }
 
 function scrollToBottom() {
@@ -225,7 +225,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
             }
         });
 
-        socket.on("command", (data) => {        
+        socket.on("command", function(data) {       
             console.log("Received some message in command format")
             if (data.user.id !== self_user.id) {
                 if (typeof (data.command) === "object") {
