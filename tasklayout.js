@@ -216,7 +216,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
 
         // Wait for the incoming message of your partner. If the message arrived, activate the textarea
         socket.on("text_message", function(data) {
-            console.log("Received some text message in text format")
+            console.log("Received some text message in text format",data)
             if (data.user.id !== self_user.id) {
                 // reactivate the chat-area
                 textarea.disabled = false;
@@ -226,7 +226,7 @@ scrollObserver.observe(document.querySelector('#chat-area'), {
         });
 
         socket.on("command", function(data) {       
-            console.log("Received some text message in text format")
+            console.log("Received some text message in command format",data)
             if (data.user.id !== self_user.id) {
                 // reactivate the chat-area
                 textarea.disabled = false;
